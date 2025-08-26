@@ -10,12 +10,11 @@ export async function getAllTemplates(req, res) {
 }
 
 export async function createTemplate(req, res) {
-    console.log("llegó a createTemplate");
-    return;
     const { content, author } = req.body;
-    const newTemplate = new Templates.create({
+    const newTemplate = await Templates.create({
         content: content,
         author: author
-    })
+    });
+    newTemplate.create
     return res.status(201).json({template: newTemplate});
 }

@@ -1,11 +1,13 @@
 import express, { json } from "express"
 import mongoose from "mongoose";
+import morgan from "morgan";
 
 import { templateRoutes } from "./routes/templateRoutes.js"
 
 const app = express();
 
-app.use(json);
+app.use(json());
+app.use(morgan('dev')); 
 
 const PORT = 5100;
 
