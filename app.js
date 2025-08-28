@@ -2,6 +2,8 @@ import express, { json } from "express"
 import mongoose from "mongoose";
 import morgan from "morgan";
 
+import {checkIndexes} from "./models/templateModel.js"
+
 import { templateRoutes } from "./routes/templateRoutes.js"
 
 const app = express();
@@ -25,10 +27,14 @@ mongoose.connect(mongodb_url, {
     .then(() => console.log('🟢 MongoDB connected'))
     .catch(err => console.log(err));
 
+checkIndexes();
+
 app.get("/", (req, res) => {
     return res.json({ message: "FastCRM Express API" })
 })
 
-app.use("/api", templateRoutes);
+app.use("/api/templates", templateRoutes);
+// app.use("/api/users", userRoutes);
+
 
 app.listen(PORT, () => console.log("🟢 Vivo en el puerto: " + PORT))
