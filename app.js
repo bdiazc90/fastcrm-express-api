@@ -5,6 +5,7 @@ import morgan from "morgan";
 import {checkIndexes} from "./models/templateModel.js"
 
 import { templateRoutes } from "./routes/templateRoutes.js"
+import { contactRoutes } from "./routes/contactRoutes.js";
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/templates", templateRoutes);
+app.use("/api/contacts", contactRoutes);
 // app.use("/api/users", userRoutes);
 
 
